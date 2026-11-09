@@ -1,0 +1,415 @@
+
+/* =================================
+   FIGHTERLY - MAIN DESIGN
+   Black / Fire / Gold
+================================= */
+
+:root {
+  --black: #090909;
+  --dark: #111111;
+  --card: #191919;
+  --orange: #ff6a00;
+  --fire: #ff3d00;
+  --gold: #ffbd50;
+  --white: #f5f2ed;
+  --gray: #aaa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Cairo', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+/* HEADER */
+
+header {
+  position: relative;
+  z-index: 10;
+  background: rgba(9, 9, 9, 0.96);
+  border-bottom: 1px solid #ffffff15;
+}
+
+nav {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  font-family: Arial, sans-serif;
+  font-size: 29px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  direction: ltr;
+  background: linear-gradient(
+    120deg,
+    #ffffff,
+    #ffbd50,
+    #ff6500
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  gap: 26px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.nav-links a {
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+/* BUTTONS */
+
+.nav-button,
+.btn-primary {
+  background: linear-gradient(
+    120deg,
+    #ff9c19,
+    #ff5100
+  );
+  color: white;
+  font-weight: 800;
+  border-radius: 7px;
+  box-shadow: 0 5px 25px #ff650033;
+}
+
+.nav-button {
+  padding: 10px 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 27px;
+  border-radius: 7px;
+  font-weight: 800;
+  transition: .3s;
+}
+
+.btn:hover,
+.nav-button:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.15);
+}
+
+.btn-outline {
+  border: 1px solid var(--orange);
+  color: var(--gold);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 15% 80%,
+      #ff570022,
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 85% 20%,
+      #ff990018,
+      transparent 45%
+    ),
+    linear-gradient(
+      120deg,
+      #090909,
+      #17100c,
+      #090909
+    );
+}
+
+.hero::before {
+  content: "🔥";
+  position: absolute;
+  font-size: 310px;
+  left: 2%;
+  bottom: -75px;
+  opacity: .12;
+  filter: blur(2px);
+  animation: flame 3s ease-in-out infinite alternate;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 730px;
+  padding: 90px 0;
+}
+
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+h1 {
+  font-size: clamp(42px, 8vw, 76px);
+  line-height: 1.25;
+  font-weight: 900;
+  margin: 22px 0;
+}
+
+h1 span {
+  color: var(--orange);
+  text-shadow: 0 0 35px #ff620044;
+}
+
+.hero p {
+  color: #bbb;
+  font-size: 18px;
+  line-height: 2;
+  max-width: 620px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 35px;
+}
+
+/* SECTIONS */
+
+section {
+  padding: 85px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.section-title h2 span {
+  color: var(--orange);
+}
+
+.section-title p {
+  color: var(--gray);
+}
+
+/* CATEGORIES */
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.category {
+  background: linear-gradient(145deg, #191919, #101010);
+  border: 1px solid #ffffff12;
+  padding: 28px 20px;
+  border-radius: 12px;
+  text-align: center;
+  transition: .3s;
+}
+
+.category:hover {
+  border-color: var(--orange);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px #ff650015;
+}
+
+.category .emoji {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.category h3 {
+  font-size: 17px;
+  margin-bottom: 7px;
+}
+
+.category p {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+/* PROJECTS */
+
+.projects {
+  background: #101010;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.project {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #ffffff12;
+  transition: .3s;
+}
+
+.project:hover {
+  border-color: var(--orange);
+  transform: translateY(-4px);
+}
+
+.project small {
+  color: var(--gold);
+}
+
+.project h3 {
+  margin: 12px 0;
+}
+
+.project p {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.project-label {
+  display: inline-block;
+  margin-top: 15px;
+  color: #ffb15a;
+  font-size: 12px;
+  background: #ff720018;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+/* JOIN */
+
+.join {
+  text-align: center;
+  background: radial-gradient(
+    ellipse at center,
+    #54200855,
+    transparent 70%
+  );
+}
+
+.join p {
+  color: #bbb;
+  margin: 15px auto 28px;
+  max-width: 600px;
+  line-height: 2;
+}
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid #ffffff15;
+  padding: 30px 0;
+  text-align: center;
+  color: #888;
+  font-size: 13px;
+}
+
+footer strong {
+  color: var(--gold);
+}
+
+/* ANIMATION */
+
+@keyframes flame {
+  from {
+    transform: scale(.95) rotate(-3deg);
+  }
+
+  to {
+    transform: scale(1.08) rotate(3deg);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  nav {
+    flex-wrap: wrap;
+    padding: 17px 0;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 17px;
+    font-size: 12px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .hero {
+    min-height: 540px;
+  }
+
+  .hero-content {
+    padding: 70px 0;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 65px 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .categories {
+    grid-template-columns: 1fr;
+  }
+}
